@@ -1,21 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-export default function App() {
+// Stacks
+import StackDiet from './src/components/diet/StackDiet';
+import StackHome from './src/components/home/StackHome';
+import StackWorkout from './src/components/workout/StackWorkout';
+
+function App () {
+  
+  const Tabs = createBottomTabNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <NavigationContainer>
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+      <Tabs.Navigator>
+        <Tabs.Screen
+          name="Home"
+          component={StackHome}
+        />
+
+        {/* <Tabs.Screen
+          name="Diet"
+          component={StackDiet}
+        />
+
+        <Tabs.Screen
+          name="Workout"
+          component={StackWorkout}
+        /> */}
+      </Tabs.Navigator>
+
+    </NavigationContainer>
+  );
+};
+
+export default App;
