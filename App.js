@@ -20,12 +20,12 @@ function App () {
           component={StackHome}
         />
 
-        {/* <Tabs.Screen
+        <Tabs.Screen
           name="Diet"
           component={StackDiet}
         />
 
-        <Tabs.Screen
+        {/* <Tabs.Screen
           name="Workout"
           component={StackWorkout}
         /> */}
