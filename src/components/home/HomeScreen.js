@@ -25,7 +25,7 @@ class HomeScreen extends Component {
         <FavoritesEmptyState />
         : null
         } */}
-            <Text>Esto es la página de home</Text>
+            <Text>Home screen: Here i could get some of the updates like the day of the week and the excercise is related to today, as well as the diet</Text>
 
         </View>
     );

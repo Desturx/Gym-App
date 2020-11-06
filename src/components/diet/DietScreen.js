@@ -25,7 +25,9 @@ class DietScreen extends Component {
 
 
     newDiet = () => {
-        
+        // this.props.navigation.navigate('CoinDetail', { coin });
+        this.props.navigation.navigate('Create new diet');
+
     }
 
     render() {
