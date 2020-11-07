@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { View, TextInput, Text, StyleSheet, Alert, Button } from 'react-native';
 
-
 let index = 0;
+
 class NewDiet extends Component {
 
     state = {
@@ -42,27 +42,30 @@ class NewDiet extends Component {
     }
 
     componentWillUnmount() {
+        // Remove event listener to check if the user presses the back button whithout saving the changes
         this.props.navigation.removeListener("beforeRemove", (e) => {this.askBleaving(e);});
     }   
 
-
+    // Method to create a new element to write info inside
     newElement = () => {
         this.state.elements.push(index++)
         this.setState({ elements: this.state.elements })
     }
 
     render() {
-
-        let new_element = this.state.elements.map( (elements, index) => {
+        // Function to create the new element and its components
+        let new_element = this.state.elements.map((/*elements, index*/) => {
             return (
                 <View style={styles.detailContainer}>
                     <TextInput
+                        style={styles.detailTitle}
                         placeholder="Title here"
                     />
 
                     <TextInput 
                         multiline
                         numberOfLines={4}
+                        style={styles.detailDetails}
                         placeholder="Details here"
                     />
                 </View>
@@ -79,9 +82,11 @@ class NewDiet extends Component {
                         defaultValue={"Dietname"}
                     />
                 </View>
-                
-                { new_element }
 
+                {/* Here goes the new element created by the button "New element" */}
+                { new_element }
+               
+                {/* Button to create a new element to add text into */}
                 <View style={styles.button}>
                     <Button
                         onPress={() => this.newElement()}
@@ -95,32 +100,39 @@ class NewDiet extends Component {
     
 }
 
+// Stylesheet
 const styles = StyleSheet.create({
     titleContainer: {
         backgroundColor: "red",
-        // marginHorizontal: 20,
         marginTop: 20,
         borderRadius: 3
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: "bold",
+        textAlign:"center",
+        margin: 20,
+        color: "white"
     },
     detailContainer: {
         backgroundColor: "green",
         marginHorizontal: 30,
         marginTop: 15
-    },  
-    title: {
-        fontSize: 20,
-        textAlign:"center",
-        margin: 20,
-        color: "white"
+    }, 
+    detailTitle: {
+        textAlign: "center",
+        backgroundColor: "yellow",
+        fontSize: 15
+    }, 
+    detailDetails: {
+        padding: 4,
+        fontSize: 12
     },
     button: {
-        marginLeft: 50,
-        marginRight: 50,
-        marginTop: 20,
-        marginBottom: 20
+        marginHorizontal: 50,
+        marginVertical: 20
     }
 });
 
     
-
 export default NewDiet;

@@ -41,13 +41,13 @@ class DietScreen extends Component {
                 renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
                 />
 
+                {/* Button to create a new diet */}
                 <View style={styles.button}>
                     <Button
                         onPress={() => this.newDiet()}
                         title="New Diet"
                     />
                 </View>
-            
             </View>
         );
     }
